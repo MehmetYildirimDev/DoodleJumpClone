@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlatformController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    int heal = 2;
     void Start()
     {
         
@@ -23,7 +23,13 @@ public class PlatformController : MonoBehaviour
             if (collision.relativeVelocity.y <= 0f)
             {
                 collision.gameObject.GetComponent<CharachterController>().JumpControl();
-                Debug.Log("caepýyo");
+                heal--;
+                this.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+
+                if (heal<=-0)
+                {
+                    Destroy(this.gameObject);
+                }
             }
 
         }
